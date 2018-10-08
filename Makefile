@@ -1,7 +1,19 @@
 CC=g++ 
 CFLAGS= -w -Wall -I ./eigen/
 all:
-	$(CC) $(CFLAGS) LASSO_IRL1_LOG_v1.0.cpp -o run_irl1
-	$(CC) $(CFLAGS) LASSO_IRL1_IST_LOG_v1.0.cpp -o run_irl1_ist
+	$(CC) $(CFLAGS) 12aug2018_rwl1.cpp -o gorwl
+	$(CC) $(CFLAGS) 12aug2018_rwl1ist.cpp -o gorwlist
 
 
+
+.PHONY: opt
+opt:override CFLAGS += -O2
+opt:all
+
+.PHONY: prof
+prof:override CFLAGS += -p
+prof:all
+
+.PHONY: clean
+clean:
+	rm go*
